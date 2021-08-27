@@ -1,9 +1,17 @@
+html,
+body {
+    height: 100%;
+}
 body, 
 * {
     font-family: 'Gamja Flower', cursive;
     color: #333;
 }
 body {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     /* background: #ffffca; */
     background-image: url("../img/coco-bg1.jpg");
     background-size: cover;
@@ -38,7 +46,6 @@ body.dark input[type="button"] {
 
 .inner {
     max-width: 500px;
-    margin: 100px auto;
     text-align: center;
     padding: 0 30px;
 }
@@ -128,3 +135,34 @@ input[type="button"]:hover {
     transform: scale(1.04);
 }
 
+
+@media (max-width: 798px) {
+    html,
+    body {
+        height: 100%;
+    }
+    .inner {
+        /* margin: 30px 0;
+        padding: 0 50px; */
+    }
+    .talk {
+        height: 150px;
+        font-size: 20px;
+    }
+    .character {
+        height: 200px;
+    }
+    .character img {
+        padding: 4% 18%;
+    }
+    input {
+        font-size: 18px;
+        padding: 6px 20px;
+    }
+    input[type="button"] {
+        font-size: 18px;
+    }
+    .notice span {
+        font-size: 15px;
+    }
+}

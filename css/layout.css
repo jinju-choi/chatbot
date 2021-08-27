@@ -6,7 +6,7 @@ body,
 body {
     /* background: #ffffca; */
     background-image: url("../img/coco-bg1.jpg");
-    background-size: 100%;
+    background-size: cover;
     background-position: 60%;
     transition: 1s;
 }
@@ -121,7 +121,7 @@ input[type="button"]{
     cursor: pointer;
     font-size: 24px;
     font-weight: 600;
-    transition: 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+    transition: 0.3s cubic-bezier(.68,-0.55,.27,1.55);
     box-shadow: 4px 4px 8px rgba(0,0,0,.3);
 }
 input[type="button"]:hover {

@@ -53,13 +53,13 @@ let message = [
 btn.addEventListener('click', textCheck );
 noticeTyping();
 
+
 function textCheck () {
   let value = document.getElementById('talk').value;
   
   if(follow == 0){
     message.forEach(element =>{
-
-      if(value.indexOf(element.question) >= 0){
+      if(value.indexOf(element.question) >= 0 ){
         typingtalk (element.answer)
         img.src = element.img;
         darkMode(value);
@@ -69,18 +69,16 @@ function textCheck () {
           follow = 1;
         }
       } 
-      // else if(value != element.question)  {
-      //   talk.innerHTML = "그말은 아직 안배웠다앵!";
-      //   img.src = "img/coco8.png"
-      // }
-      console.log(value.indexOf(element.question));
-      
+      else if(value !== element.question)  {
+        talk.innerHTML = "그말은 아직 안배웠다앵!";
+        img.src = "img/coco8.png"
+      }      
     });
   }
   else {
     followTalk (value);
   }
-  value = "";
+
 }
 
 

@@ -1,4 +1,5 @@
 const talk = document.getElementsByClassName('talk')[0];
+const input = document.getElementById('talk');
 const btn = document.getElementById('submit');
 const img = document.getElementsByClassName('character')[0].children[0];
 const body = document.getElementsByTagName('body')[0];
@@ -151,4 +152,12 @@ function noticeTyping() {
 
 
 btn.addEventListener('click', textCheck );
+input.addEventListener('keypress', function(e){
+  console.log(e.code)
+  if (e.code == 'Enter'){
+    textCheck();
+  }
+});
+
+
 noticeTyping();

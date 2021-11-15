@@ -45,7 +45,7 @@ body.dark input[type="button"] {
 }
 
 .inner {
-    max-width: 500px;
+    width: 500px;
     text-align: center;
     padding: 0 30px;
 }
@@ -142,8 +142,7 @@ input[type="button"]:hover {
         height: 100%;
     }
     .inner {
-        /* margin: 30px 0;
-        padding: 0 50px; */
+        width: 350px;
     }
     .talk {
         height: 150px;

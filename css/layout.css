@@ -2,8 +2,8 @@ html,
 body {
     height: 100%;
 }
-body, 
-* {
+*, 
+body {
     font-family: 'Gamja Flower', cursive;
     color: #333;
 }
@@ -22,11 +22,11 @@ body.dark {
     background-color: rgba(0,0,0,.6);
     background-blend-mode: multiply;
 }
-body.dark .talk {
+body.dark .talk-box {
     background: rgba(255,255,255,.4);
     color: #000;
 }
-body.dark .talk::after {
+body.dark .talk-box::after {
     border: 10px solid rgba(255,255,255,.4);
     border-left-color: transparent;
     border-right-color: transparent;
@@ -40,27 +40,29 @@ body.dark input[type="button"] {
     background-color: #688924;
     color: #fff;
 }
-.dark .talk span {
+.dark .talk-box span {
     color: #fff;
 }
 
-.inner {
-    width: 500px;
-    text-align: center;
-    padding: 0 30px;
-}
-.notice {
+
+.typing-text {
     height: 60px;
     padding: 10px;
+    text-align: center;
     color: #fff;
 }
-.notice span {
+.typing-text span {
     color: #fff;
     font-size: 20px;
     text-shadow: 2px 2px 4px rgba(0,0,0,.8);
     line-height: 1.4;
 }
-.talk {
+.inner {
+    width: 500px;
+    text-align: center;
+    padding: 0 30px;
+}
+.talk-box {
     width: 100%;
     height: 250px;
     margin: 0 auto;
@@ -73,7 +75,7 @@ body.dark input[type="button"] {
     box-shadow: 5px 3px 10px rgba(0,0,0,0.1);
     position: relative;
 }
-.talk::after {
+.talk-box::after {
     content: "";
     display: block;
     width: 0;
@@ -86,18 +88,18 @@ body.dark input[type="button"] {
     bottom: -20px;
     left: 40%;
 }
-.character {
-    width: 300px;
-    height: 300px;
+.image {
+    width: 250px;
+    height: 260px;
     margin: 20px auto;
     overflow: hidden;
 }
-.character img {
+.image img {
     width: 100%;
     padding: 5%;
     box-sizing: border-box;
 }
-fieldset {
+.form {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -144,14 +146,14 @@ input[type="button"]:hover {
     .inner {
         width: 350px;
     }
-    .talk {
+    .talk-box {
         height: 150px;
         font-size: 20px;
     }
-    .character {
+    .image {
         height: 200px;
     }
-    .character img {
+    .image img {
         padding: 4% 18%;
     }
     input {
@@ -161,7 +163,7 @@ input[type="button"]:hover {
     input[type="button"] {
         font-size: 18px;
     }
-    .notice span {
+    .typing-text span {
         font-size: 15px;
     }
 }

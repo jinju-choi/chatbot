@@ -1,8 +1,9 @@
-const talk = document.getElementsByClassName('talk')[0];
-const btn = document.getElementById('submit');
-const img = document.getElementsByClassName('character')[0].children[0];
+let talk = document.querySelector('.talk-box');
+const input = document.getElementById('input');
+const btn = document.getElementById('button');
+const img = document.getElementsByClassName('image')[0].children[0];
 const body = document.getElementsByTagName('body')[0];
-const notice = document.getElementsByClassName('notice')[0];
+const notice = document.getElementsByClassName('typing-text')[0];
 
 let count = 0;
 let follow = 0;
@@ -55,7 +56,7 @@ noticeTyping();
 
 
 function textCheck () {
-  let value = document.getElementById('talk').value;
+  let value = document.getElementById('input').value;
   
   if(follow == 0){
     message.forEach(element =>{

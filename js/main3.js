@@ -1,9 +1,9 @@
-const talk = document.getElementsByClassName('talk')[0];
-const input = document.getElementById('talk');
-const btn = document.getElementById('submit');
-const img = document.getElementsByClassName('character')[0].children[0];
+let talk = document.querySelector('.talk-box');
+const input = document.getElementById('input');
+const btn = document.getElementById('button');
+const img = document.getElementsByClassName('image')[0].children[0];
 const body = document.getElementsByTagName('body')[0];
-const notice = document.getElementsByClassName('notice')[0];
+const notice = document.getElementsByClassName('typing-text')[0];
 
 let count = 0;
 let follow = 0;
@@ -43,11 +43,6 @@ let message = [
     "question" : "일어나",
     "answer" : "기상~ 배고프다앵!",
     "img": "img/coco6.png"
-  },
-  {
-    "question" : "따라해",
-    "answer" : "난 앵무새니까 따라해볼게앵!",
-    "img": "img/coco4.png"
   }
 ];
 
@@ -58,39 +53,42 @@ let key = 0;// 키 값을 이용하여 말을 배우는 상황인지 아닌지 �
 
 
 function textCheck() {
-
-  let value = document.getElementById('talk').value;
-
+  let talk = document.querySelector('.talk-box');
+  let value = document.getElementById('input').value;
+  
   if(key == 1) { //key 값이 1인 경우, 사용자의 선택 유도
-    if(value == "그래"){
-      talk.innerHTML = "대답을 입력해주세요!"
+    if(value == "응"){
+      talk.innerHTML = "뭐라고 대답할까앵!?"
       key = 2; //key 값을 2로 만들어, 대답을 입력받는 조건으로 변경
-      console.log(key);
     }
     else {
-      talk.innerHTML = "그럼 다른말 해줘앵!"
+      talk.innerHTML = "다음에 알려줘앵!"
       key = 0; // key값을 다시 0으로 변경하여 상태 변경
     }
     return;
   }
+
   if(key == 2) {
     answer = value; //전역변수 answer값에 사용자의 입력을 저장
     pushMessage();
+    return;
   }
 
-    for (let idx = 0; idx < message.length; idx++) {
 
-      if(value.indexOf(message[idx].question) >= 0) {
-        typingtalk (message[idx].answer);
-        img.src = message[idx].img;
-        darkMode (value);
-        return;
-      }else {
-        talk.innerHTML = "그 말은 몰라요~ <br> 대답을 가르쳐 주실래요? (그래 or 나중에)";
-        question = value; //사용자의 질문을 미리 저장
-        key = 1; //조건문으로 진입하게 만들 키 값 변경
-      }
+
+  for (let i = 0; i < message.length; i++) {
+    if(value.indexOf(message[i].question) >= 0) {
+      typingtalk(message[i].answer);
+      img.src = message[i].img;
+      darkMode(value);
+      return;
     }
+  }
+
+  talk.innerHTML = "그 말은 몰라요~ <br> 대답을 가르쳐 주실래요? (응 or 아니)";
+  question = value; //사용자의 질문을 미리 저장
+  key = 1; //조건문으로 진입하게 만들 키 값 변경
+  console.log(key)
 }
 
 
@@ -98,7 +96,15 @@ function pushMessage() {
   message.push({question: `${question}`, answer: `${answer}`,img: "img/coco8.png"}); //json이라는 데이터에 값을 추가하는 push함수
   talk.innerHTML = "말을 배웠다 앵!";
   key = 0; //키 값 0으로 초기화
-  console.log(key);
+}
+
+function time(val) {
+  let today = new Date();
+  let hours = today.getHours();
+  let minuites = today.getMinutes();
+  let timeText = '지금은'+ hours+ '시'+ minuites + '분 이야';
+  typingtalk(timeText);
+  
 }
 
 function darkMode (valu) {
@@ -109,20 +115,6 @@ function darkMode (valu) {
  }
 }
 
-function followTalk (val) {
-  if (val.indexOf('그만') >= 0) {
-    if(count > 1){
-      talk.innerHTML = val + '~ 앵!';
-      count++;
-    }else {
-      talk.innerHTML = "알겠다..앵";
-      follow = 0;
-      count = 0;
-    }
-  }else {
-    talk.innerHTML = val + '~ 앵!';
-  }
-}
 
 //답변 타이핑
 function typingtalk (va) {
@@ -138,6 +130,7 @@ function typingtalk (va) {
 
 //공지사항 타이핑
 function noticeTyping() {
+  let typingText = '말을 걸어보세요 <br> 키워드: [ 안녕 / 이름 / 밥 / 바보 / 못생겼어 / 불꺼 / 일어나]';
   let typewriter = new Typewriter(notice, {
     loop: false
   });
@@ -145,7 +138,7 @@ function noticeTyping() {
     .typeString('앵무새가 자고있네요..')
     .pauseFor(1500)
     .deleteAll()
-    .typeString('말을 걸어보세요<br> [ 안녕 / 이름 / 밥 / 바보 / 못생겼어 / 불꺼 / 일어나 / 따라해 ]')
+    .typeString(typingText)
     .pauseFor(1500)
     .start();
 }
@@ -153,9 +146,9 @@ function noticeTyping() {
 
 btn.addEventListener('click', textCheck );
 input.addEventListener('keypress', function(e){
-  console.log(e.code)
   if (e.code == 'Enter'){
     textCheck();
+    input.value= '';
   }
 });
 

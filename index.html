@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/layout.css">
   <link rel="icon" href="./img/coco-icon.png">
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/2.18.0/core.min.js"
     integrity="sha512-XpSfIIupzvkhza/hT76X11BXXysUeg/bTeTB/Obn+8U2x3Ul12Kb071BBL3zUV8JL7G7YOooKVhjJeolBcUtOQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -20,17 +21,19 @@
 </head>
 
 <body>
-  <div class="inner">
-    <div class="notice"></div>
-    <div class="talk">ZZz😴</div>
-    <div class="character">
-      <img src="img/coco5.png" alt="앵무새코코">
-    </div>
 
-    <fieldset>
-      <input id="talk" type="text" placeholder="코코에게 말을 걸어보세요">
-      <input id="submit" type="button" value="대화하기">
-    </fieldset>
+  <div class="container">
+    <div class="typing-text"></div>
+    <div class="inner">
+      <div class="talk-box">ZZz😴</div>
+      <div class="image">
+        <img src="img/coco5.png" alt="앵무새코코">
+      </div>
+      <div class="form">
+        <input id="input" type="text" placeholder="코코에게 말을 걸어보세요">
+        <input id="button" type="button" value="대화하기">
+      </div>
+    </div>
   </div>
 
 </body>
